@@ -14,18 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!-- Search Text Style. -->
-    <style name="SearchTextStyle">
-        <!-- Custom values write to here for SearchEditText. -->
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:enabled">true</item>
-        <item name="android:hint">Search</item>
-        <item name="android:imeOptions">actionSearch</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:maxLength">15</item>
-        <item name="android:inputType">textCapSentences</item>
-        <item name="android:textColorHint">#80999999</item>
-        <item name="android:textColor">#000</item>
+    <style name="Splash_Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+    <style name="Splash_Theme" parent="Splash_Base">
+        <item name="android:windowBackground">@drawable/splash_window_bg</item>
     </style>
 </resources>
