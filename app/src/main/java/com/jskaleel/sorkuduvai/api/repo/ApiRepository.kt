@@ -24,7 +24,10 @@ class ApiRepository @Inject constructor(private val apiHandler: ApiHandler) {
                 val status: String = jsonBody.optString("status", "No match found")
                 if (status.equals("success", true)) {
                     val successResponse =
-                        Gson().fromJson(jsonBody.toString(), QueryResponse.QuerySuccess::class.java)
+                        Gson().fromJson(
+                            jsonBody.toString(),
+                            QueryResponse.QuerySuccess::class.java
+                        )
                     emit(NetworkResponse.Success(successResponse))
                 } else {
                     emit(NetworkResponse.Error(status))

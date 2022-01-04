@@ -3,14 +3,14 @@ package com.iammert.library.ui.multisearchviewlib
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.RelativeLayout
+import android.widget.FrameLayout
 import com.iammert.library.ui.multisearchviewlib.databinding.ViewMultiSearchBinding
 
 class MultiSearchView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     interface MultiSearchViewListener {
 

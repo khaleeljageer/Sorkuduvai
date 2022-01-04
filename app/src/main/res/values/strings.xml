@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">சொற்குவை</string>
     <string name="loading">Loading…</string>
+    <string name="no_internet_connect">No Internet Connection</string>
+    <string name="list_one_title">செந்தமிழ்ச் சொற்பிறப்பியல் பேரகரமுதலி</string>
+    <string name="expand_or_collapse">Expand or Collapse</string>
+    <string name="app_description">செந்தமிழ்ச் சொற்பிறப்பியல் அகரமுதலித்திட்டம்</string>
+    <string name="more_options">More Options</string>
 </resources>

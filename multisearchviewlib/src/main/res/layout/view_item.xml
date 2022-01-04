@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
@@ -40,6 +40,6 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:padding="4dp"
         android:visibility="gone"
-        app:tint="#3492F7"
-        app:srcCompat="@drawable/ic_round_clear_24px" />
+        app:srcCompat="@drawable/ic_round_clear_24px"
+        app:tint="#3492F7" />
 </LinearLayout>

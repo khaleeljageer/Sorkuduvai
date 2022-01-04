@@ -9,25 +9,52 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtAppName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:letterSpacing="0.1"
         android:text="@string/app_name"
         android:textColor="@color/app_primaryDarkColor"
         android:textSize="32sp"
         app:fontFamily="@font/arima_madurai_black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivMore"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.1"
+        android:text="@string/app_description"
+        android:textColor="@color/app_primaryDarkColor"
+        android:textSize="11sp"
+        app:fontFamily="@font/arima_madurai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtAppName"
+        tools:ignore="SmallSp" />
+
+    <ImageView
+        android:id="@+id/ivMore"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:contentDescription="@string/more_options"
+        android:padding="10dp"
+        android:src="@drawable/ic_round_more"
+        app:layout_constraintBottom_toBottomOf="@id/txtAppName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txtAppName"
+        app:tint="@color/app_primaryDarkColor" />
 
     <com.iammert.library.ui.multisearchviewlib.MultiSearchView
         android:id="@+id/multiSearchView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtAppName"
+        app:layout_constraintTop_toBottomOf="@id/txtDescription"
         app:searchTextStyle="@style/SearchTextStyle" />
 
     <androidx.viewpager2.widget.ViewPager2
