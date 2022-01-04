@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:paddingLeft="32dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -25,12 +24,12 @@
 
             <View
                 android:id="@+id/viewIndicator"
-                android:layout_width="24dp"
+                android:layout_width="20dp"
                 android:layout_height="4dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/indicator_line"
                 android:visibility="invisible" />
 
         </LinearLayout>
-
     </HorizontalScrollView>
 </RelativeLayout>

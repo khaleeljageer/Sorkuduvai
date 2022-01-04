@@ -3,6 +3,7 @@ package com.iammert.library.ui.multisearchviewlib
 import android.animation.LayoutTransition
 import android.animation.ValueAnimator
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -196,7 +197,8 @@ class MultiSearchContainerView @JvmOverloads constructor(
     fun isInSearchMode() = isInSearchMode
 
     private fun createNewSearchView(): ViewItemBinding {
-        val viewItem: ViewItemBinding = ViewItemBinding.inflate(LayoutInflater.from(context), this, false)
+        val viewItem: ViewItemBinding =
+            ViewItemBinding.inflate(LayoutInflater.from(context), this, false)
 
         viewItem.editTextSearch.setStyle(context, searchTextStyle)
 
@@ -295,12 +297,22 @@ class MultiSearchContainerView @JvmOverloads constructor(
         binding.viewIndicator.visibility = View.VISIBLE
         viewItemBinding.imageViewRemove.visibility = View.VISIBLE
         viewItemBinding.editTextSearch.alpha = 1f
+        
+        with(Color.parseColor("#3492F7")) {
+            viewItemBinding.imageViewRemove.setColorFilter(this)
+            viewItemBinding.editTextSearch.setTextColor(this)
+        }
     }
 
     private fun deselectTab(viewItemBinding: ViewItemBinding) {
         binding.viewIndicator.visibility = View.INVISIBLE
         viewItemBinding.imageViewRemove.visibility = View.GONE
         viewItemBinding.editTextSearch.alpha = 0.5f
+
+        with(Color.parseColor("#000000")) {
+            viewItemBinding.imageViewRemove.setColorFilter(this)
+            viewItemBinding.editTextSearch.setTextColor(this)
+        }
     }
 
     private fun changeSelectedTab(newSelectedTabItem: ViewItemBinding) {

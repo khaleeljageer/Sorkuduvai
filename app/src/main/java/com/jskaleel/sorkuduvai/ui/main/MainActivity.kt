@@ -29,20 +29,20 @@ class MainActivity : AppCompatActivity(), MultiSearchView.MultiSearchViewListene
     }
 
     override fun onItemSelected(index: Int, s: CharSequence) {
-        Timber.tag("Khaleel").d("onItemSelected ==== Index : $index Word : $s")
+        Timber.tag("Khaleel").d("onItemSelected == Index : $index Word : $s")
     }
 
     override fun onSearchComplete(index: Int, s: CharSequence) {
-        Timber.tag("Khaleel").d("onSearchComplete ==== Index : $index Word : $s")
+        Timber.tag("Khaleel").d("onSearchComplete == Index : $index Word : $s")
         mainViewModel.queryWord(s.toString())
     }
 
     override fun onSearchItemRemoved(index: Int) {
-        Timber.tag("Khaleel").d("onSearchItemRemoved ==== Index : $index")
+        Timber.tag("Khaleel").d("onSearchItemRemoved == Index : $index")
     }
 
     override fun onTextChanged(index: Int, s: CharSequence) {
-        Timber.tag("Khaleel").d("onTextChanged ==== Index : $index Word : $s")
+        Timber.tag("Khaleel").d("onTextChanged == Index : $index Word : $s")
     }
 
 
