@@ -297,7 +297,7 @@ class MultiSearchContainerView @JvmOverloads constructor(
         binding.viewIndicator.visibility = View.VISIBLE
         viewItemBinding.imageViewRemove.visibility = View.VISIBLE
         viewItemBinding.editTextSearch.alpha = 1f
-        
+
         with(Color.parseColor("#3492F7")) {
             viewItemBinding.imageViewRemove.setColorFilter(this)
             viewItemBinding.editTextSearch.setTextColor(this)
@@ -308,11 +308,6 @@ class MultiSearchContainerView @JvmOverloads constructor(
         binding.viewIndicator.visibility = View.INVISIBLE
         viewItemBinding.imageViewRemove.visibility = View.GONE
         viewItemBinding.editTextSearch.alpha = 0.5f
-
-        with(Color.parseColor("#000000")) {
-            viewItemBinding.imageViewRemove.setColorFilter(this)
-            viewItemBinding.editTextSearch.setTextColor(this)
-        }
     }
 
     private fun changeSelectedTab(newSelectedTabItem: ViewItemBinding) {

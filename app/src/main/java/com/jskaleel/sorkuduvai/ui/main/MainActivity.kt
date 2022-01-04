@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), MultiSearchView.MultiSearchViewListene
 
     override fun onSearchComplete(index: Int, s: CharSequence) {
         Timber.tag("Khaleel").d("onSearchComplete == Index : $index Word : $s")
-        mainViewModel.queryWord(s.toString())
+        mainViewModel.queryWord(baseContext, s.toString())
     }
 
     override fun onSearchItemRemoved(index: Int) {
