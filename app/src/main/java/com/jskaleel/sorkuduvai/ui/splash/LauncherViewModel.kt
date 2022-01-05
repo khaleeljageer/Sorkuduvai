@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jskaleel.sorkuduvai.api.repo.ApiRepository
+import com.jskaleel.sorkuduvai.api.repo.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LauncherViewModel @Inject constructor(
-    private val apiRepository: ApiRepository
+    private val mainRepository: MainRepository
 ) : ViewModel() {
 
     private var _isReady = MutableLiveData<Boolean>()

@@ -1,21 +1,32 @@
 package com.jskaleel.sorkuduvai.ui.fragments.query
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.jskaleel.sorkuduvai.R
-import com.jskaleel.sorkuduvai.databinding.FragmentDetailsBinding
-import com.jskaleel.sorkuduvai.utils.viewBinding
+import com.google.android.material.composethemeadapter.MdcTheme
+import com.jskaleel.sorkuduvai.utils.compose.Hello
 
-class QueryDetailFragment : Fragment(R.layout.fragment_details) {
+class QueryDetailFragment : Fragment() {
 
-    private val binding by viewBinding(FragmentDetailsBinding::bind)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val query = arguments?.getString(QUERY, "")
-        binding.txtLabel.text = query
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return ComposeView(requireContext()).apply {
+            setContent {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+                MdcTheme {
+                    val query = arguments?.getString(QUERY, "")
+                    Hello(query)
+                }
+            }
+        }
     }
 
     companion object {
