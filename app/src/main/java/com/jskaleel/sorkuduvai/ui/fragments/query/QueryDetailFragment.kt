@@ -4,31 +4,40 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import android.widget.TextView
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.os.bundleOf
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.android.material.composethemeadapter.MdcTheme
 import com.jskaleel.sorkuduvai.R
+import com.jskaleel.sorkuduvai.model.DictObject
 import com.jskaleel.sorkuduvai.model.QueryResponse
 import com.jskaleel.sorkuduvai.ui.main.MainViewModel
 import com.jskaleel.sorkuduvai.utils.compose.EmptyResult
+import com.jskaleel.sorkuduvai.utils.compose.sanaFontFamily
 import com.jskaleel.sorkuduvai.utils.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -99,12 +108,160 @@ class QueryDetailFragment : Fragment() {
     }
 
     @Composable
-    fun QuerySuccessContainer(modifier: Modifier, queryResponse: QueryResponse.QuerySuccess) {
-        Text(
-            modifier = modifier.fillMaxWidth(),
-            text = queryResponse.status,
-            textAlign = TextAlign.Center
+    fun QuerySuccessContainer(
+        modifier: Modifier,
+        queryResponse: QueryResponse.QuerySuccess,
+    ) {
+        val dictList = listOf(
+            queryResponse.list1,
+            queryResponse.list2,
+            queryResponse.list3,
+            queryResponse.list4,
+            queryResponse.list5,
+            queryResponse.list6
         )
+        LazyColumn(modifier = modifier.fillMaxSize()) {
+            items(dictList) {
+                ListDictView("செந்தமிழ்ச் சொற்பிறப்பியல் பேரகரமுதலி", queryResponse.list1)
+                ListStringView("சொற்பிறப்பியல்", queryResponse.list2)
+                ListDictView("தமிழ் இணையக் கல்விக்கழக கலைச்சொல் பேரகராதி", queryResponse.list3)
+                ListDictView("ஆட்சிச் சொல் அகராதி", queryResponse.list4)
+                ListDictView("சொல் அகராதி", queryResponse.list5)
+                ListStringView("", queryResponse.list6)
+            }
+        }
+    }
+
+    @Composable
+    fun ListStringView(title: String, list: List<String>) {
+        Card(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
+            elevation = 3.dp
+        ) {
+            Column(modifier = Modifier.fillMaxWidth().padding(15.dp)) {
+                Text(
+                    text = title,
+                    style = TextStyle(
+                        color = colorResource(R.color.app_primaryDarkColor),
+                        fontFamily = sanaFontFamily,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Divider(color = colorResource(R.color.app_primaryLightColor), thickness = 1.dp)
+                list.forEach {
+                    Spacer(modifier = Modifier.height(10.dp))
+                    HtmlText(it)
+                }
+            }
+        }
+    }
+
+    @Composable
+    fun HtmlText(html: String, modifier: Modifier = Modifier) {
+        AndroidView(
+            modifier = modifier,
+            factory = { context -> TextView(context) },
+            update = { it.text = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT) },
+        )
+    }
+
+    @Composable
+    fun ListDictView(title: String, list: List<DictObject>) {
+        Card(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
+            elevation = 3.dp
+        ) {
+            Column(modifier = Modifier.fillMaxWidth().padding(15.dp)) {
+                Text(
+                    text = title,
+                    style = TextStyle(
+                        color = colorResource(R.color.app_primaryDarkColor),
+                        fontFamily = sanaFontFamily,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Divider(color = colorResource(R.color.app_primaryLightColor), thickness = 1.dp)
+                list.forEach {
+                    when (it.pos) {
+                        "noun" -> {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = "பெ. | N.",
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp
+                                )
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = it.enWord,
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 14.sp
+                                )
+                            )
+                        }
+                        "verb" -> {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = "வி. | V.",
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp
+                                )
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = it.enWord,
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 14.sp
+                                )
+                            )
+                        }
+                        else -> {
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = "பிற | Misc.",
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp
+                                )
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(
+                                text = it.enWord,
+                                style = TextStyle(
+                                    color = Color(0xFF777777),
+                                    fontFamily = sanaFontFamily,
+                                    fontWeight = FontWeight.Normal,
+                                    fontSize = 14.sp
+                                )
+                            )
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     companion object {

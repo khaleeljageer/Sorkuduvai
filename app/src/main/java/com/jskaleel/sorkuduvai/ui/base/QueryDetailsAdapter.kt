@@ -17,9 +17,9 @@ class QueryDetailsAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return if (position == 0) {
-            RecentSearchesFragment.newInstance(position)
+            QueryDetailFragment.newInstance(position, "அடி")
         } else {
-            QueryDetailFragment.newInstance(position, tabList[position])
+            RecentSearchesFragment.newInstance(position)
         }
     }
 
@@ -31,8 +31,10 @@ class QueryDetailsAdapter(
     }
 
     fun removeItem(index: Int) {
-        tabList.removeAt(index)
-        notifyItemRangeRemoved(index, tabList.size)
+        if (tabList.size > index) {
+            tabList.removeAt(index)
+            notifyItemRangeRemoved(index, tabList.size)
+        }
     }
 
     override fun containsItem(itemId: Long): Boolean {

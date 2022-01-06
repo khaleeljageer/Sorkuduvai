@@ -20,10 +20,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -42,6 +40,7 @@ import com.jskaleel.sorkuduvai.R
 import com.jskaleel.sorkuduvai.db.entities.RecentSearchEntity
 import com.jskaleel.sorkuduvai.ui.main.MainViewModel
 import com.jskaleel.sorkuduvai.utils.compose.EmptyResult
+import com.jskaleel.sorkuduvai.utils.compose.iconTintColor
 import com.jskaleel.sorkuduvai.utils.compose.sanaFontFamily
 import com.jskaleel.sorkuduvai.utils.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,7 +73,7 @@ class RecentSearchesFragment : Fragment() {
             initial = listOf()
         )
 
-        val isLoading: Boolean by viewModel.isLoading
+        val isLoading: Boolean by viewModel.recentLoading
 
         ConstraintLayout {
             val (body, progress) = createRefs()
@@ -133,7 +132,6 @@ class RecentSearchesFragment : Fragment() {
         recent: RecentSearchEntity,
         viewModel: MainViewModel = hiltViewModel()
     ) {
-        val context = LocalContext.current
         Card(
             modifier = Modifier
                 .padding(8.dp)
@@ -162,7 +160,7 @@ class RecentSearchesFragment : Fragment() {
                         },
                     contentDescription = "",
                     contentScale = ContentScale.Inside,
-                    colorFilter = ColorFilter.tint(color = Color(0xFF777777))
+                    colorFilter = iconTintColor
                 )
             }
         }

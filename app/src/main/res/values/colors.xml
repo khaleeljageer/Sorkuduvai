@@ -10,5 +10,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="app_primaryDarkColor">#2962FF</color>
-    <color name="app_primaryLightColor">#93C5FA</color>
+    <color name="app_primaryLightColor">#648CFB</color>
 </resources>
