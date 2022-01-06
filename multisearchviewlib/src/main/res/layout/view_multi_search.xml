@@ -28,6 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_round_search_24px"
-        app:tint="#3492F7" />
+        app:tint="#ffffff" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

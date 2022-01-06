@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecentSearchDao {
-    @Query("select * from recent_search order by time_stamp desc limit :limit")
-    fun getRecentSearch(limit: Int): Flow<MutableList<RecentSearchEntity>>
+    @Query("select * from recent_search order by time_stamp desc")
+    fun getRecentSearch(): Flow<MutableList<RecentSearchEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(item: RecentSearchEntity)

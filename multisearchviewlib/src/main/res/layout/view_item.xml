@@ -20,7 +20,7 @@
         android:enabled="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:fontFamily="@font/arima_madurai"
+        android:fontFamily="@font/noto_sans_tamil_regular"
         android:hint="@string/search"
         android:imeOptions="actionSearch"
         android:inputType="textCapSentences"
@@ -41,5 +41,5 @@
         android:padding="4dp"
         android:visibility="gone"
         app:srcCompat="@drawable/ic_round_clear_24px"
-        app:tint="#3492F7" />
+        app:tint="#ffffff" />
 </LinearLayout>

@@ -4,58 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_16dp"
     tools:context=".ui.main.MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtAppName"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:letterSpacing="0.1"
-        android:text="@string/app_name"
-        android:textColor="@color/app_primaryDarkColor"
-        android:textSize="32sp"
-        app:fontFamily="@font/arima_madurai_black"
-        app:layout_constraintEnd_toStartOf="@id/ivMore"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:letterSpacing="0.1"
-        android:text="@string/app_description"
-        android:textColor="@color/app_primaryDarkColor"
-        android:textSize="11sp"
-        app:fontFamily="@font/arima_madurai"
+        android:background="@drawable/home_top_gradient_view"
+        android:elevation="@dimen/margin_8dp"
+        android:paddingStart="@dimen/padding_16dp"
+        android:paddingTop="@dimen/padding_16dp"
+        android:paddingBottom="@dimen/padding_16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtAppName"
-        tools:ignore="SmallSp" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry">
 
-    <ImageView
-        android:id="@+id/ivMore"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:contentDescription="@string/more_options"
-        android:padding="10dp"
-        android:src="@drawable/ic_round_more"
-        app:layout_constraintBottom_toBottomOf="@id/txtAppName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/txtAppName"
-        app:tint="@color/app_primaryDarkColor" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtAppName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:letterSpacing="0.05"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            app:fontFamily="@font/noto_sans_tamil_black"
+            app:layout_constraintEnd_toStartOf="@id/ivMore"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.iammert.library.ui.multisearchviewlib.MultiSearchView
-        android:id="@+id/multiSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtDescription"
-        app:searchTextStyle="@style/SearchTextStyle" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:text="@string/app_description"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:fontFamily="@font/noto_sans_tamil_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtAppName"
+            tools:ignore="SmallSp" />
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:contentDescription="@string/more_options"
+            android:padding="10dp"
+            android:src="@drawable/ic_round_more"
+            app:layout_constraintBottom_toBottomOf="@id/txtAppName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtAppName"
+            app:tint="@color/white" />
+
+        <com.iammert.library.ui.multisearchviewlib.MultiSearchView
+            android:id="@+id/multiSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="@dimen/margin_5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription"
+            app:searchTextStyle="@style/SearchTextStyle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -64,6 +82,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/multiSearchView" />
+        app:layout_constraintTop_toBottomOf="@id/topLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

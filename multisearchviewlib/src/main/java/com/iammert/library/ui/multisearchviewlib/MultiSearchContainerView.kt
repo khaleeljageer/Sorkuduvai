@@ -298,7 +298,7 @@ class MultiSearchContainerView @JvmOverloads constructor(
         viewItemBinding.imageViewRemove.visibility = View.VISIBLE
         viewItemBinding.editTextSearch.alpha = 1f
 
-        with(Color.parseColor("#3492F7")) {
+        with(Color.parseColor("#ffffff")) {
             viewItemBinding.imageViewRemove.setColorFilter(this)
             viewItemBinding.editTextSearch.setTextColor(this)
         }
