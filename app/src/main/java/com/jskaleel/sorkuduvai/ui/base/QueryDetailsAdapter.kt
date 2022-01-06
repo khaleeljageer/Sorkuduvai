@@ -17,9 +17,9 @@ class QueryDetailsAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return if (position == 0) {
-            QueryDetailFragment.newInstance(position, "அடி")
-        } else {
             RecentSearchesFragment.newInstance(position)
+        } else {
+            QueryDetailFragment.newInstance(position, tabList[position])
         }
     }
 

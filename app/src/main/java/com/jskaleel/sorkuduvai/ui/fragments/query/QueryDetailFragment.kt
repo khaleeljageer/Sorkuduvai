@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
@@ -112,23 +112,13 @@ class QueryDetailFragment : Fragment() {
         modifier: Modifier,
         queryResponse: QueryResponse.QuerySuccess,
     ) {
-        val dictList = listOf(
-            queryResponse.list1,
-            queryResponse.list2,
-            queryResponse.list3,
-            queryResponse.list4,
-            queryResponse.list5,
-            queryResponse.list6
-        )
-        LazyColumn(modifier = modifier.fillMaxSize()) {
-            items(dictList) {
-                ListDictView("செந்தமிழ்ச் சொற்பிறப்பியல் பேரகரமுதலி", queryResponse.list1)
-                ListStringView("சொற்பிறப்பியல்", queryResponse.list2)
-                ListDictView("தமிழ் இணையக் கல்விக்கழக கலைச்சொல் பேரகராதி", queryResponse.list3)
-                ListDictView("ஆட்சிச் சொல் அகராதி", queryResponse.list4)
-                ListDictView("சொல் அகராதி", queryResponse.list5)
-                ListStringView("", queryResponse.list6)
-            }
+        Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
+            ListDictView("செந்தமிழ்ச் சொற்பிறப்பியல் பேரகரமுதலி", queryResponse.list1)
+            ListStringView("சொற்பிறப்பியல்", queryResponse.list2)
+            ListDictView("தமிழ் இணையக் கல்விக்கழக கலைச்சொல் பேரகராதி", queryResponse.list3)
+            ListDictView("ஆட்சிச் சொல் அகராதி", queryResponse.list4)
+            ListDictView("சொல் அகராதி", queryResponse.list5)
+            ListStringView("மற்றவை", queryResponse.list6)
         }
     }
 
