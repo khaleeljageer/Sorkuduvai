@@ -1,2 +1,2 @@
 # Sorkuduvai
-sample android tamil dict app
+Android application for [sorkuvai.com](https://sorkuvai.com)
