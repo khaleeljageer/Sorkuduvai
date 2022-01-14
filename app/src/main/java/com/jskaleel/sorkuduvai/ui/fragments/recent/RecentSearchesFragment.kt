@@ -153,8 +153,7 @@ class RecentSearchesFragment : Fragment() {
 
                 Image(
                     painterResource(R.drawable.ic_round_clear),
-                    modifier = Modifier
-                        .align(Alignment.CenterEnd)
+                    modifier = Modifier.align(Alignment.CenterEnd)
                         .clickable {
                             viewModel.removeRecentItem(recent.timeStamp)
                         },

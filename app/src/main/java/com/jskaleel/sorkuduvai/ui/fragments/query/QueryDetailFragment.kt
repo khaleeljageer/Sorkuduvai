@@ -99,7 +99,6 @@ class QueryDetailFragment : Fragment() {
                 }
             }
         }
-
     }
 
     @Composable
@@ -165,6 +164,7 @@ class QueryDetailFragment : Fragment() {
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
+
             elevation = 3.dp
         ) {
             Column(modifier = Modifier.fillMaxWidth().padding(15.dp)) {
